@@ -42,4 +42,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$PlayerStats.text = str(Global.heroes[Global.floorCount - 3])
+	Global.def = Global.heroes[Global.floorCount - 3][0]
+	Global.per = Global.heroes[Global.floorCount - 3][1]
+	Global.potions = Global.heroes[Global.floorCount - 3][2]
+	$PlayerStats.text = "Defense: " + str(Global.def) + " Persistence: " + str(Global.per) + " Potions: " + str(Global.potions)
+	#str(Global.heroes[Global.floorCount - 3])

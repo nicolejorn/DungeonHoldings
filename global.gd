@@ -21,6 +21,10 @@ var score = 0
 
 var heroes = [] #[defense, persistence, potionCount]
 
+var def = 0
+var per = 0
+var potions = 0
+
 var currentGoldString = "Current Gold: " + str(currentGold) + "\n"
 
 enum Features {BOSS, CHEST}
