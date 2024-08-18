@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bpym86xj8smh4"]
+
+[node name="CodeEdit" type="CodeEdit"]
+offset_right = 800.0
+offset_bottom = 400.0
