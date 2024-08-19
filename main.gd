@@ -3,7 +3,7 @@ extends Node2D
 enum Mode {SETTINGS, FLOOR_SELECT, FLOOR}
 var m = Mode.SETTINGS
 var floorCount = 3
-var startingGold = 3000
+var startingGold = 4000
 var cost = 0
 
 # Called when the node enters the scene tree for the first time.

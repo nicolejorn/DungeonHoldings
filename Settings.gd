@@ -30,11 +30,13 @@ func generateHero(strength):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#print(Global.maxEnemiesAndPuzzles)
+	Global.currentGoldString = "Current Gold: " + str(Global.currentGold) + "\n"
 	Global.heroes = [] #might be better as 1d array
 	for i in 3:
 		Global.heroes.append([])
 		generateHero(i)
-	print(Global.heroes)
+	#print(Global.heroes)
 	$Label.visible = true
 	Global.cost = Global.floorCount * 300
 	$Label.text = Global.currentGoldString + "Floor count: " + str(Global.floorCount) + " Cost: " + str(Global.cost)
@@ -42,6 +44,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	Global.currentGoldString = "Current Gold: " + str(Global.currentGold) + "\n"
 	Global.def = Global.heroes[Global.floorCount - 3][0]
 	Global.per = Global.heroes[Global.floorCount - 3][1]
 	Global.potions = Global.heroes[Global.floorCount - 3][2]

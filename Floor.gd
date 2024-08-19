@@ -8,6 +8,9 @@ var intro = "(Row)(Column)(Letter) Options:
 	# Set a starter value for each position
 #var floorGrid = []
 
+func validNumber(inputtedNumber):
+	(int(inputtedNumber) > 0) and (int(inputtedNumber) < 4) #and (Global.maxEnemiesAndPuzzles >= inputtedNumber)
+
 func createNewRooms():
 	Global.score = 0
 	Global.puzzleChallenge = 0
@@ -60,7 +63,7 @@ func _on_line_edit_text_submitted(new_text):
 			if Global.heroes[Global.floorCount - 3][0] > 0:
 				Global.heroes[Global.floorCount - 3][0] -= 2
 	if(new_text.substr(2,1).to_lower() == 'e'):
-		if(new_text.substr(3,1).is_valid_int()):
+		if(new_text.substr(3,1).is_valid_int()): # and validNumber(new_text.substr(3,1))
 			if Global.currentGold < (100 * int(new_text.substr(3,1))):
 				$Updates.text = intro + "You don't have enough gold!"
 			else:
