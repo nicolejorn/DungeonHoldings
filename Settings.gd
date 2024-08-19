@@ -2,6 +2,17 @@ extends Control
 
 #signal finalizedFloors(count)
 
+func startGame():
+	#m = Mode.FLOOR_SELECT
+	Global.currentGold -= Global.cost
+	$Label.visible = false
+	Global.floorArray.resize(Global.floorCount)
+	Global.floorArray.fill(false)
+	#finalizedFloors.emit(floorCount)
+	Global.currentFloor = 1
+	get_tree().change_scene_to_file("res://Floor.tscn")
+	#get_tree().change_scene_to_file("res://FloorSelect.tscn")
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		var typed_event = event as InputEventKey
@@ -12,15 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				Global.cost = Global.floorCount * 300
 				$Label.text = Global.currentGoldString + "Floor count: " + str(Global.floorCount) + " Cost: " + str(Global.cost)
 		elif key_typed == 'p' and Global.currentGold >= Global.cost:
-			#m = Mode.FLOOR_SELECT
-			Global.currentGold -= Global.cost
-			$Label.visible = false
-			Global.floorArray.resize(Global.floorCount)
-			Global.floorArray.fill(false)
-			#finalizedFloors.emit(floorCount)
-			Global.currentFloor = 1
-			get_tree().change_scene_to_file("res://Floor.tscn")
-			#get_tree().change_scene_to_file("res://FloorSelect.tscn")
+			startGame()
 
 func generateHero(strength):
 	Global.heroes[strength].append(strength * 5)
@@ -50,3 +53,13 @@ func _process(delta):
 	Global.potions = Global.heroes[Global.floorCount - 3][2]
 	$PlayerStats.text = "Defense: " + str(Global.def) + " Persistence: " + str(Global.per) + " Potions: " + str(Global.potions)
 	#str(Global.heroes[Global.floorCount - 3])
+
+
+func _on_more_enemies_pressed():
+	if (Global.currentGold > 10000):
+		Global.currentGold -= 10000
+		Global.maxEnemiesAndPuzzles += 1
+
+
+func _on_start_pressed():
+	startGame()

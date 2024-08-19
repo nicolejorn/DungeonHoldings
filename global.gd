@@ -1,7 +1,7 @@
 extends Node
 
 @export var floorCount = 3
-@export var currentGold = 4000
+@export var currentGold = 6000
 @export var cost = 0
 @export var currentFloor = 1
 @export var maxEnemiesAndPuzzles = 3

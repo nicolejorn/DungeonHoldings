@@ -9,7 +9,7 @@ var intro = "(Row)(Column)(Letter) Options:
 #var floorGrid = []
 
 func validNumber(inputtedNumber):
-	(int(inputtedNumber) > 0) and (int(inputtedNumber) < 4) #and (Global.maxEnemiesAndPuzzles >= inputtedNumber)
+	return (int(inputtedNumber) > 0) and (Global.maxEnemiesAndPuzzles >= int(inputtedNumber))
 
 func createNewRooms():
 	Global.score = 0
@@ -63,7 +63,7 @@ func _on_line_edit_text_submitted(new_text):
 			if Global.heroes[Global.floorCount - 3][0] > 0:
 				Global.heroes[Global.floorCount - 3][0] -= 2
 	if(new_text.substr(2,1).to_lower() == 'e'):
-		if(new_text.substr(3,1).is_valid_int()): # and validNumber(new_text.substr(3,1))
+		if(new_text.substr(3,1).is_valid_int() and validNumber(new_text.substr(3,1))): # and validNumber(new_text.substr(3,1))
 			if Global.currentGold < (100 * int(new_text.substr(3,1))):
 				$Updates.text = intro + "You don't have enough gold!"
 			else:
@@ -71,7 +71,7 @@ func _on_line_edit_text_submitted(new_text):
 				Global.score += (10 * int(new_text.substr(3,1)))
 				Global.currentGold -= (100 * int(new_text.substr(3,1)))
 	if(new_text.substr(2,1).to_lower() == 'p'):
-		if(new_text.substr(3,1).is_valid_int()):
+		if(new_text.substr(3,1).is_valid_int() and validNumber(new_text.substr(3,1))):
 			if Global.currentGold < (200 * int(new_text.substr(3,1))):
 				$Updates.text = intro + "You don't have enough gold!"
 			else:

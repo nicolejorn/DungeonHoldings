@@ -46,7 +46,7 @@ func _ready():
 			$FinalResult.visible = true
 			$FinalResult.text = $FinalResult.text + "You win!"
 			#give gold based on difficulty
-			Global.currentGold += 10000
+			Global.currentGold += (Global.floorCount * 3000)
 			break
 	if Global.heroHealth > 0 and Global.heroGaveUp == false:
 		$FinalResult.visible = true
