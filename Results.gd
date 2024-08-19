@@ -59,6 +59,7 @@ func _process(delta):
 
 
 func _on_play_again_pressed():
+	Global.heroGaveUp == false
 	Global.heroHealth = 100
 	Global.bossPlaced = false
 	Global.floorCount = 3
